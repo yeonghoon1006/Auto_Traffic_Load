@@ -88,6 +88,8 @@ a.button2:hover {
 
 <script type="text/javascript">
 
+// home icon 클릭 시 동작
+        
 function home_click(){
 $(".date").hide();
 $(".wrap").hide();
@@ -99,7 +101,8 @@ document.getElementById("cisco").className = "w3-bar-item w3-button";
 document.getElementById("cscf").className = "w3-bar-item w3-button";
 
 }
-
+        
+// samsung icon 클릭 시 동작
 function click_samsung(){
 document.getElementById("samsung").className = "w3-bar-item w3-button w3-dark-grey";
 document.getElementById("cisco").className = "w3-bar-item w3-button";
@@ -114,6 +117,7 @@ $("#toni").hide();
 
 }
 
+// cisco icon 클릭 시 동작
 function click_cisco(){
 document.getElementById("samsung").className = "w3-bar-item w3-button";
 document.getElementById("cisco").className = "w3-bar-item w3-button w3-dark-grey";
@@ -127,6 +131,7 @@ $("#toni").hide();
 
 }
 
+// cscf icon 클릭 시 동작
 function click_cscf(){
 document.getElementById("samsung").className = "w3-bar-item w3-button";
 document.getElementById("cisco").className = "w3-bar-item w3-button";
@@ -137,6 +142,8 @@ setToday();
 
 
 </script>
+
+<!-- 날짜 선정(시작 날짜/끝 날짜)-->
 <div class="date" style="position:absolute; top:33%; left:31%">
 <h1 class="w3-large">Starting Date</h1>
 </div>
@@ -148,6 +155,7 @@ setToday();
 <div class="date" id="datepicker" style="position:absolute; top:38%; left:28%"></div>
 <div class="date" id="datepicker2" style="position:absolute; top:38%; left:55%"></div>
 
+<!-- 삼성 클릭 시 보여주는 화면 -->
 <div class="wrap" style="top:78%; left:33%; position:absolute">
         <a href="#" class="button" onclick="button4_click();">장비 부하</a>
 </div>
@@ -159,7 +167,7 @@ setToday();
 </div>
 
 
-
+<!-- 시스코 클릭 시 보여주는 화면 -->
 <div class="wrap2" style="top:78%; left:33%; position:absolute">
         <a href="#" class="button" onclick="button1_click();">장비 부하</a>
 </div>
@@ -171,8 +179,6 @@ setToday();
 </div>
 
 
-
-
 <img id="toni" src="./auto_static/past_bike.jpg" style="width:35%; height:50%; position:absolute; left:33%; top:30%;">
 
 <script>
@@ -182,6 +188,7 @@ $(".wrap").hide();
 $(".wrap2").hide();
 
 
+// 오늘 날짜 함수
 function getToday(){
     var date = new Date();
     var year = date.getFullYear();
@@ -192,11 +199,13 @@ function getToday(){
 }
 
 
+// default 로 시작,끝 날짜는 오늘 날짜로 설정
 var startDate = getToday();
 var endDate = getToday();
 var s_startDate = getToday();
 var s_endDate = getToday();
 
+// 달력에서도 오늘 날짜를 기본으로 설정
 function setToday(){
             $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
             $('#datepicker2').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
@@ -253,6 +262,7 @@ function setToday(){
 
 var nowDate = getToday();
 
+// 시스코 - 장비부하 클릭 시 실행
 function button1_click() {
 if(nowDate < startDate || nowDate < endDate)
 {
@@ -261,7 +271,8 @@ alert("오늘 날짜 이상은 선택하실 수 없습니다.");
 window.open('http://172.21.160.206/search_traffic.php?start_date='+startDate+' 00:00:00&end_date='+endDate+' 23:55:55&stat=GURO', 'newWindow');
 }
 }
-
+        
+// 시스코 - 트래픽 부하 클릭 시 실행
 function button2_click() {
 
 if(nowDate < startDate || nowDate < endDate)
@@ -272,6 +283,7 @@ window.open('http://172.21.160.206/search_flow.php?start_date='+startDate+'&end_
 }
 }
 
+// 시스코 - 세션부하 클릭 시 실행
 function button3_click() {
 if(nowDate < startDate || nowDate < endDate)
 {
@@ -281,6 +293,7 @@ window.open('http://172.21.160.206/search_session.php?start_date='+startDate+'&e
 }
 }
 
+// 삼성 - 장비부하 클릭 시 실행
 function button4_click() {
 if(nowDate < startDate || nowDate < endDate)
 {
@@ -290,6 +303,7 @@ window.open('http://172.21.160.206/s_search_traffic.php?start_date='+startDate+'
 }
 }
 
+// 삼성 - 트래픽 부하 클릭 시 실행
 function button5_click() {
 
 if(nowDate < startDate || nowDate < endDate)
@@ -300,6 +314,7 @@ window.open('http://172.21.160.206/s_search_flow.php?start_date='+startDate+'&en
 }
 }
 
+// 삼성 - 세션  클릭 시 실행
 function button6_click() {
 if(nowDate < startDate || nowDate < endDate)
 {
