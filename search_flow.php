@@ -102,7 +102,7 @@ while(true) {
 // 하루 씩 추가하여 계산
 $new_date = date("Y-m-d", strtotime("+1 day", strtotime($new_date)));
 
-// MYSQL 에 접속해서 하루 씩 가입자 수 DATA 파싱
+// MYSQL 에 접속해서 하루 씩 최대 트래픽 DATA 파싱
 
 $PGW01_TRAFFIC="SELECT SYSTEM,MAX(subquery1.RX) FROM (SELECT SYSTEM,DATETIME,SUM(UTIL_RX_5MIN_MBPS) AS RX,SUM(UTIL_TX_5MIN_MBPS) AS TX from ".$STAT."_PGW01_PortStat where (DATETIME >= '".$new_date." 00:00:00') AND (DATETIME <= '".$new_date." 23:55:55') GROUP BY DATETIME) subquery1;";
 $PGW03_TRAFFIC="SELECT SYSTEM,MAX(subquery1.RX) FROM (SELECT SYSTEM,DATETIME,SUM(UTIL_RX_5MIN_MBPS) AS RX,SUM(UTIL_TX_5MIN_MBPS) AS TX from ".$STAT."_PGW03_PortStat where (DATETIME >= '".$new_date." 00:00:00') AND (DATETIME <= '".$new_date." 23:55:55') GROUP BY DATETIME) subquery1;";
